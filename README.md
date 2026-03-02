@@ -2,7 +2,7 @@
 
 
 
-To build the demo clone the GitHub repository and extract its zip file.
+To build the demo clone the GitHub repository
 
 Download Unity 6.3 LTS(6000.3.10f1) and add 428ADAA-main as a project in unity.
 
@@ -23,4 +23,5 @@ Throw balls using the F key.
 
 
 To change ball throw force, select main camera in hierarchy, then scroll down on the inspector tab to find the Summon Thrower Script, which has a Throw Force value set to 100 by default.
+
 
