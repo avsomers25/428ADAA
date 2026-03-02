@@ -22,5 +22,5 @@ Throw balls using the F key.
 
 
 
-To change ball throw force, select main camera in hierarchy, then scroll down on the inspector tab to find the Summon Thrower Script, which has a Throw Force value set to 100 by defalt.
+To change ball throw force, select main camera in hierarchy, then scroll down on the inspector tab to find the Summon Thrower Script, which has a Throw Force value set to 100 by default.
 
