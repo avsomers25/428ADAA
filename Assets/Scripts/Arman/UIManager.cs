@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(key) && (key == KeyCode.LeftShift))
         {
-            AddLineToConsole($"DUMMY SPAWNED}");
+            AddLineToConsole($"DUMMY SPAWN");
         }
     }
 
