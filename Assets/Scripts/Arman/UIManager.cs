@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -7,54 +8,63 @@ public class UIManager : MonoBehaviour
     public SummonThrower throwerScript; 
     public Slider forceSlider;
     
+    [Header("Console Settings")]
+    public GameObject linePrefab; // A prefab with TextMeshPro and the ConsoleLine script
+    public Transform consoleContainer; // A UI Panel with a Vertical Layout Group
+
     [Header("WASD Visuals")]
-    public Image wKey;
-    public Image aKey;
-    public Image sKey;
-    public Image dKey;
-    public Image fKey;
-    public Image LeftShiftKey;
-    public Color normalColor = new Color(1, 1, 1, 0.5f); // Semi-transparent white
+    public Image wKey, aKey, sKey, dKey, fKey, LeftShiftKey;
+    public Color normalColor = new Color(1, 1, 1, 0.5f);
     public Color activeColor = Color.green;
 
     void Start()
     {
-        // If you didn't drag it in, try to find it automatically
         if (throwerScript == null)
             throwerScript = FindFirstObjectByType<SummonThrower>();
 
         if (forceSlider != null && throwerScript != null)
         {
-            // Set slider to the current value of the script
             forceSlider.value = throwerScript.throwForce;
-            
-            // Listen for slider changes
             forceSlider.onValueChanged.AddListener(HandleSliderChange);
         }
     }
 
     void Update()
     {
-        // Highlight logic
-        SetKeyColor(KeyCode.W, wKey);
-        SetKeyColor(KeyCode.A, aKey);
-        SetKeyColor(KeyCode.S, sKey);
-        SetKeyColor(KeyCode.D, dKey);
-        SetKeyColor(KeyCode.F, fKey);
-        SetKeyColor(KeyCode.LeftShift, LeftShiftKey);
+        HandleInput(KeyCode.W, wKey);
+        HandleInput(KeyCode.A, aKey);
+        HandleInput(KeyCode.S, sKey);
+        HandleInput(KeyCode.D, dKey);
+        HandleInput(KeyCode.F, fKey);
+        HandleInput(KeyCode.LeftShift, LeftShiftKey);
+    }
+
+    void HandleInput(KeyCode key, Image targetImage)
+    {
+        if (targetImage == null) return;
+        targetImage.color = Input.GetKey(key) ? activeColor : normalColor;
+
+        if (Input.GetKeyDown(key) && (key == KeyCode.LeftShift))
+        {
+            AddLineToConsole($"DUMMY SPAWNED}");
+        }
+    }
+
+    void AddLineToConsole(string message)
+    {
+        if (linePrefab == null || consoleContainer == null) return;
+
+        // Create the new line UI element
+        GameObject newLine = Instantiate(linePrefab, consoleContainer);
+        
+        // Set the text and timestamp
+        string timestamp = System.DateTime.Now.ToString("HH:mm:ss");
+        newLine.GetComponentInChildren<TextMeshProUGUI>().text = $"[{timestamp}] {message}";
     }
 
     void HandleSliderChange(float value)
     {
         if (throwerScript != null)
-        {
             throwerScript.throwForce = value;
-        }
-    }
-
-    void SetKeyColor(KeyCode key, Image targetImage)
-    {
-        if (targetImage == null) return;
-        targetImage.color = Input.GetKey(key) ? activeColor : normalColor;
     }
 }
