@@ -5,10 +5,12 @@ public class SummonThrower : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform throwPoint;
     public float throwForce = 20f;
+    
+    public KeyCode throwkey;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(throwkey))
         {
             GameObject proj = Instantiate(projectilePrefab, throwPoint.position, throwPoint.rotation);
 
