@@ -1,25 +1,73 @@
 using UnityEngine;
+using TMPro;
 
 public class SummonThrower : MonoBehaviour
 {
-    public GameObject projectilePrefab;
+    public GameObject[] throwableObjects;
     public Transform throwPoint;
-    public float throwForce = 20f;
-    
-    public KeyCode throwkey;
+    public float throwForce = 30f;
+
+    public TextMeshProUGUI selectedObjectText;
+
+    int currentObject = 0;
+
+    void Start()
+    {
+        UpdateSelectedText();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(throwkey))
+        // Press 1 -> previous object
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            GameObject proj = Instantiate(projectilePrefab, throwPoint.position, throwPoint.rotation);
+            currentObject--;
+            if (currentObject < 0)
+                currentObject = throwableObjects.Length - 1;
 
-            Rigidbody rb = proj.GetComponent<Rigidbody>();
+            UpdateSelectedText();
+        }
 
-            if (rb != null)
-            {
-                rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
-            }
+        // Press 2 -> next object
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentObject++;
+            if (currentObject >= throwableObjects.Length)
+                currentObject = 0;
+
+            UpdateSelectedText();
+        }
+
+        // Throw object
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ThrowObject();
+        }
+    }
+
+    void ThrowObject()
+    {
+        if (throwableObjects.Length == 0) return;
+
+        GameObject obj = Instantiate(
+            throwableObjects[currentObject],
+            throwPoint.position,
+            throwPoint.rotation
+        );
+
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
+        }
+    }
+
+    void UpdateSelectedText()
+    {
+        if (selectedObjectText != null && throwableObjects.Length > 0)
+        {
+            selectedObjectText.text = "Selected: " + throwableObjects[currentObject].gameObject.name;
         }
     }
 }
