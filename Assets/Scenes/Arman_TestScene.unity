@@ -1813,6 +1813,7 @@ MonoBehaviour:
   - {fileID: 8409310119316611051, guid: efc9562d4bf483f4088ae33e84892af6, type: 3}
   - {fileID: 7633619570826002447, guid: c6408bf31ace08b4287433d841234014, type: 3}
   - {fileID: 2260904763374805038, guid: 4bb5a2e4a135cf041b699ed7608a2e97, type: 3}
+  - {fileID: 6070314562781201534, guid: badec5da15657a94f99dd8dfb67b3f00, type: 3}
   throwPoint: {fileID: 1823182457}
   throwForce: 30
   selectedObjectText: {fileID: 1318947236}
@@ -1846,7 +1847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SummonThrower
   throwableObjects:
-  - {fileID: 3577213444510331581, guid: 53eb3a824ae9c934d855b6954b00b985, type: 3}
+  - {fileID: 1656077252}
   throwPoint: {fileID: 1379559380}
   throwForce: 20
   selectedObjectText: {fileID: 0}
@@ -3909,6 +3910,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1047793461}
   m_SourcePrefab: {fileID: 100100000, guid: 53eb3a824ae9c934d855b6954b00b985, type: 3}
+--- !u!1 &1656077252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3577213444510331581, guid: 53eb3a824ae9c934d855b6954b00b985, type: 3}
+  m_PrefabInstance: {fileID: 1656077251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1694551320
 GameObject:
   m_ObjectHideFlags: 0
