@@ -4,19 +4,26 @@ using UnityEngine.AI;
 public class CrowdAgent : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public Transform target; // Assigned by the SpawnThrow script
+    public Transform target;
     private bool isWalking = false;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        // Ensure the agent is off while flying
-        if (agent != null) agent.enabled = false; 
+
+        if (agent != null)
+            agent.enabled = false;
+
+        isWalking = false;
+    }
+
+    void OnEnable()
+    {
+        ResetMovementState();
     }
 
     void Update()
     {
-        // If we haven't started walking yet, check if we've landed
         if (!isWalking && agent != null)
         {
             CheckForNavMesh();
@@ -25,7 +32,6 @@ public class CrowdAgent : MonoBehaviour
 
     void CheckForNavMesh()
     {
-        // Check if the object is close enough to a valid NavMesh
         NavMeshHit hit;
         if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas))
         {
@@ -36,16 +42,40 @@ public class CrowdAgent : MonoBehaviour
     void ActivateAgent(Vector3 navMeshPosition)
     {
         isWalking = true;
-        
-        // Enable agent and snap it to the mesh
+
         agent.enabled = true;
-        agent.Warp(navMeshPosition); 
-        
+        agent.Warp(navMeshPosition);
+        agent.isStopped = false;
         agent.speed = Random.Range(3.0f, 5.0f);
 
         if (target != null)
         {
             agent.SetDestination(target.position);
+        }
+    }
+
+    public void StopMovement()
+    {
+        isWalking = false;
+
+        if (agent != null && agent.enabled)
+        {
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+    }
+
+    public void ResetMovementState()
+    {
+        if (agent == null)
+            agent = GetComponent<NavMeshAgent>();
+
+        isWalking = false;
+
+        if (agent != null)
+        {
+            agent.enabled = false;
+            agent.isStopped = false;
         }
     }
 }

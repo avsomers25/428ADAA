@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 940214439232200544}
   - component: {fileID: 1504536044397698894}
   - component: {fileID: 8177191913370759720}
+  - component: {fileID: 6853912991121577965}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -140,3 +141,17 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &6853912991121577965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409310119316611051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a2191835d92b442becb9eafdc05eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileImpact
+  impactForceMultiplier: 10
+  destroyOnHit: 1
