@@ -7,6 +7,8 @@ public class CrowdAgent : MonoBehaviour
     public Transform target;
     private bool isWalking = false;
 
+    private bool stopped = false;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -33,7 +35,7 @@ public class CrowdAgent : MonoBehaviour
     void CheckForNavMesh()
     {
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas))
+        if (!stopped && NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas))
         {
             ActivateAgent(hit.position);
         }
@@ -57,6 +59,7 @@ public class CrowdAgent : MonoBehaviour
     public void StopMovement()
     {
         isWalking = false;
+        stopped = true;
 
         if (agent != null && agent.enabled)
         {

@@ -1,9 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI; // Required for the Button and Color components
+using UnityEngine.UI; 
 
 public class SpawnUIManager : MonoBehaviour
 {
-    public SpawnThrow spawnLogic; // Drag your object with SpawnThrow here
+    public SpawnThrow spawnLogic;
     
     [Header("Colors")]
     public Color activeColor = Color.green;
@@ -15,19 +15,15 @@ public class SpawnUIManager : MonoBehaviour
 
     void Start()
     {
-        // Initialize the UI to show the first buttons as active
         UpdateButtonVisuals(spawnButtons, 0);
         UpdateButtonVisuals(goalButtons, 0);
     }
 
-    // Call this from your Spawn Buttons (On Click)
     public void SelectSpawn(int index)
     {
         spawnLogic.SetSpawnIndex(index);
         UpdateButtonVisuals(spawnButtons, index);
     }
-
-    // Call this from your Goal Buttons (On Click)
     public void SelectGoal(int index)
     {
         spawnLogic.SetGoalIndex(index);
