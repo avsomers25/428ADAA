@@ -11,7 +11,7 @@ public class SpawnThrow : MonoBehaviour
     
     [Header("Current Selection")]
     public int currentSpawnIndex = 0;
-    public int currentGoalIndex = 0;
+    public int currentGoalIndex = 1;
 
     [Header("Settings")]
     public float throwForce = 20f;

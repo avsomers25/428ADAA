@@ -15,23 +15,22 @@ public class FreeCam : MonoBehaviour
     private bool looking = false;
 
     void Start(){ 
-        StartLooking();
+        //StartLooking();
     }
 
     void Update()
     {
         // 1. Check if Control is being held (Left or Right)
-        bool ctrlPressed = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        bool ctrlPressed = Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl);
 
         // 2. If Ctrl is pressed, stop looking (if we were) and exit the method
         if (ctrlPressed)
         {
             if (looking) StopLooking();
+            else StartLooking();
             return; 
         }
-        else {
-            StartLooking();
-        }
+        
 
         var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         var currentSpeed = fastMode ? this.fastMovementSpeed : this.movementSpeed;

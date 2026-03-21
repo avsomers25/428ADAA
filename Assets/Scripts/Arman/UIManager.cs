@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public Transform consoleContainer; // A UI Panel with a Vertical Layout Group
 
     [Header("WASD Visuals")]
-    public Image wKey, aKey, sKey, dKey, fKey, LeftShiftKey;
+    public Image wKey, aKey, sKey, dKey, fKey, LeftShiftKey, ctrlKey, qKey, eKey;
     public Color normalColor = new Color(1, 1, 1, 0.5f);
     public Color activeColor = Color.green;
 
@@ -36,7 +36,10 @@ public class UIManager : MonoBehaviour
         HandleInput(KeyCode.S, sKey);
         HandleInput(KeyCode.D, dKey);
         HandleInput(KeyCode.F, fKey);
+        HandleInput(KeyCode.Q, qKey);
+        HandleInput(KeyCode.E, eKey);
         HandleInput(KeyCode.LeftShift, LeftShiftKey);
+        HandleInput(KeyCode.LeftControl, ctrlKey);
     }
 
     void HandleInput(KeyCode key, Image targetImage)
