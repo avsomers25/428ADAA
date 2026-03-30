@@ -3990,7 +3990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94177dfac12fa9640b1c98264b7da583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnThrow
-  projectilePrefab: {fileID: 1845908587520756193, guid: cf0615fd468e23746b00d8e45a179077, type: 3}
+  projectilePrefab: {fileID: 2726366307343478655}
   spawnPoints:
   - {fileID: 1533215920}
   - {fileID: 2030159963}
@@ -9271,11 +9271,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanDummy_M Orange_Ragdoll
       objectReference: {fileID: 0}
+    - target: {fileID: 9139215045726070146, guid: cf0615fd468e23746b00d8e45a179077, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1845908587520756193, guid: cf0615fd468e23746b00d8e45a179077, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2726366307343478656}
   m_SourcePrefab: {fileID: 100100000, guid: cf0615fd468e23746b00d8e45a179077, type: 3}
+--- !u!1 &2726366307343478655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1845908587520756193, guid: cf0615fd468e23746b00d8e45a179077, type: 3}
+  m_PrefabInstance: {fileID: 2726366307343478654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &2726366307343478656
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726366307343478655}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 3, y: 1, z: 3}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
