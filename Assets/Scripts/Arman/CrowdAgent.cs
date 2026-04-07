@@ -5,19 +5,24 @@ public class CrowdAgent : MonoBehaviour
 {
     private NavMeshAgent agent;
     private NavMeshObstacle obstacle;
-    
+    private Animator animator;
+
     public Transform target;
     public float avoidanceRadius = 10.0f;
 
     private bool isWalking = false;
     private bool stopped = false;
 
+    // Matches your Animator Controller parameters exactly
+    private readonly string boolParam = "isMoving";
+    private readonly string floatParam = "Speed";
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         obstacle = GetComponent<NavMeshObstacle>();
+        animator = GetComponent<Animator>();
 
-        // Configure obstacle for carving
         if (obstacle != null)
         {
             obstacle.shape = NavMeshObstacleShape.Capsule;
@@ -43,7 +48,10 @@ public class CrowdAgent : MonoBehaviour
         {
             CheckForNavMesh();
         }
+
     }
+
+  
 
     void CheckForNavMesh()
     {
@@ -59,13 +67,18 @@ public class CrowdAgent : MonoBehaviour
         if (obstacle != null) obstacle.enabled = false;
 
         isWalking = true;
+        stopped = false; // Ensure stopped is false when starting
         agent.enabled = true;
         agent.Warp(navMeshPosition);
         agent.isStopped = false;
-        agent.speed = Random.Range(3.0f, 5.0f);
+        agent.speed = Random.Range(3.0f, 10.0f); // Adjust range as needed
+        print("SPEED" + agent.speed);
+        animator.SetFloat(floatParam, agent.speed);
+        animator.SetBool(boolParam, true);
 
         if (target != null)
         {
+
             agent.SetDestination(target.position);
         }
     }
@@ -77,13 +90,19 @@ public class CrowdAgent : MonoBehaviour
 
         if (agent != null)
         {
-            agent.enabled = false; // Agent must be off for obstacle to carve properly
+            agent.enabled = false; 
         }
 
-        // Enable obstacle to create the avoidance zone
         if (obstacle != null)
         {
             obstacle.enabled = true;
+        }
+        
+        // Manual trigger to ensure it stops immediately
+        if (animator != null)
+        {
+            animator.SetBool(boolParam, false);
+            animator.SetFloat(floatParam, 0f);
         }
     }
 
@@ -91,6 +110,7 @@ public class CrowdAgent : MonoBehaviour
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         if (obstacle == null) obstacle = GetComponent<NavMeshObstacle>();
+        if (animator == null) animator = GetComponent<Animator>();
 
         isWalking = false;
         stopped = false;
@@ -100,7 +120,12 @@ public class CrowdAgent : MonoBehaviour
         if (agent != null)
         {
             agent.enabled = false;
-            agent.isStopped = false;
+        }
+
+        if (animator != null)
+        {
+            animator.SetBool(boolParam, false);
+            animator.SetFloat(floatParam, 0f);
         }
     }
 }

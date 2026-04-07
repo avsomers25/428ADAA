@@ -49,9 +49,14 @@ public class RagdollController : MonoBehaviour
             if (rb.gameObject == gameObject)
                 continue;
 
+            if (!rb.isKinematic)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
             rb.isKinematic = true;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+
         }
 
         if (crowdAgent != null)
@@ -75,9 +80,14 @@ public class RagdollController : MonoBehaviour
             if (rb.gameObject == gameObject)
                 continue;
 
+
+            if (!rb.isKinematic || enabled) 
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
             rb.isKinematic = !enabled;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
         }
     }
 

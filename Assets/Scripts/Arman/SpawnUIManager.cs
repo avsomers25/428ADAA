@@ -17,6 +17,8 @@ public class SpawnUIManager : MonoBehaviour
     {
         UpdateButtonVisuals(spawnButtons, 0);
         UpdateButtonVisuals(goalButtons, 0);
+        SelectSpawn(0);
+        SelectGoal(1);
     }
 
     public void SelectSpawn(int index)

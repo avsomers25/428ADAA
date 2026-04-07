@@ -1824,6 +1824,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2905029944514762638, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: eac3dd87194d0004aadef2264ce6616c, type: 2}
     - target: {fileID: 5565334121522638830, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.84669995
@@ -3923,7 +3927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94177dfac12fa9640b1c98264b7da583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnThrow
-  projectilePrefab: {fileID: 8501460395190474574, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+  projectilePrefab: {fileID: 4267737330977333671, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
   spawnPoints:
   - {fileID: 1533215920}
   - {fileID: 2030159963}
@@ -3936,7 +3940,10 @@ MonoBehaviour:
   - {fileID: 197565987}
   currentSpawnIndex: 0
   currentGoalIndex: 0
-  throwForce: 20
+  spawnCount: 10
+  circleRadius: 3
+  minThrowForce: 15
+  maxThrowForce: 25
   throwKey: 304
 --- !u!114 &961739758
 MonoBehaviour:
@@ -8923,7 +8930,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 604712594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1646599098810987358
+--- !u!1001 &460275791852202442
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8931,59 +8938,59 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1940361495524621294, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1533215920}
-    - target: {fileID: 8501460395190474574, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
-      propertyPath: m_Name
-      value: HumanDummy_M Orange_Ragdoll
-      objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.728
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.2580181
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9128956437946502644, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+    - target: {fileID: 3490813977152437021, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4267737330977333671, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
+      propertyPath: m_Name
+      value: HumanDummy_M Orange_Ragdoll
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802922007439106332, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1533215920}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 30d4f14ff4e6e3e42a690875dbae68df, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 35584a50e1eaa5146b05566299b9da9b, type: 3}
 --- !u!1001 &8173353173329364669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9050,7 +9057,7 @@ SceneRoots:
   - {fileID: 604712594}
   - {fileID: 505702790}
   - {fileID: 1420729675}
-  - {fileID: 1646599098810987358}
+  - {fileID: 460275791852202442}
   - {fileID: 1127186014}
   - {fileID: 1379559380}
   - {fileID: 1017060347}
