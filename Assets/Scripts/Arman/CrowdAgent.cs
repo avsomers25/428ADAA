@@ -44,14 +44,31 @@ public class CrowdAgent : MonoBehaviour
 
     void Update()
     {
+        // Logic for finding the NavMesh initially
         if (!isWalking && agent != null && !stopped)
         {
             CheckForNavMesh();
         }
 
+        // NEW: Logic for checking if we have arrived at the target
+        if (isWalking && agent != null && agent.enabled && !agent.pathPending)
+        {
+            CheckDestination();
+        }
     }
 
-  
+    void CheckDestination()
+    {
+        // Checks if the agent is close enough to the destination
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            // Double check if the agent has a path or is very close to avoid false triggers
+            if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            {
+                StopMovement();
+            }
+        }
+    }
 
     void CheckForNavMesh()
     {
@@ -67,18 +84,17 @@ public class CrowdAgent : MonoBehaviour
         if (obstacle != null) obstacle.enabled = false;
 
         isWalking = true;
-        stopped = false; // Ensure stopped is false when starting
+        stopped = false; 
         agent.enabled = true;
         agent.Warp(navMeshPosition);
         agent.isStopped = false;
-        agent.speed = Random.Range(3.0f, 10.0f); // Adjust range as needed
-        print("SPEED" + agent.speed);
+        agent.speed = Random.Range(3.0f, 10.0f);
+        
         animator.SetFloat(floatParam, agent.speed);
         animator.SetBool(boolParam, true);
 
         if (target != null)
         {
-
             agent.SetDestination(target.position);
         }
     }
@@ -90,6 +106,8 @@ public class CrowdAgent : MonoBehaviour
 
         if (agent != null)
         {
+            // It is safer to check enabled before setting to false
+            if(agent.isActiveAndEnabled) agent.isStopped = true;
             agent.enabled = false; 
         }
 
@@ -98,7 +116,6 @@ public class CrowdAgent : MonoBehaviour
             obstacle.enabled = true;
         }
         
-        // Manual trigger to ensure it stops immediately
         if (animator != null)
         {
             animator.SetBool(boolParam, false);
