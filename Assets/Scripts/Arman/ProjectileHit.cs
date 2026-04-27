@@ -2,35 +2,27 @@ using UnityEngine;
 
 public class ProjectileImpact : MonoBehaviour
 {
+    public float damage = 20f;
     public float impactForceMultiplier = 10f;
     public bool destroyOnHit = true;
 
     private void OnCollisionEnter(Collision collision)
     {
-        RagdollController ragdoll = collision.collider.GetComponentInParent<RagdollController>();
+        DummyHealth health = collision.collider.GetComponentInParent<DummyHealth>();
 
-        if (ragdoll != null)
+        if (health != null)
         {
             Vector3 hitPoint = collision.contacts[0].point;
 
-            Rigidbody myRb = GetComponent<Rigidbody>();
-            Vector3 hitForce = Vector3.zero;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Vector3 hitForce = rb != null
+                ? rb.linearVelocity * impactForceMultiplier
+                : transform.forward * impactForceMultiplier;
 
-            if (myRb != null)
-            {
-                hitForce = myRb.linearVelocity * impactForceMultiplier;
-            }
-            else
-            {
-                hitForce = transform.forward * impactForceMultiplier;
-            }
-
-            ragdoll.EnableRagdoll(hitForce, hitPoint);
+            health.TakeDamage(damage, hitForce, hitPoint);
         }
 
         if (destroyOnHit)
-        {
             Destroy(gameObject);
-        }
     }
 }

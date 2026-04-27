@@ -153,5 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a2191835d92b442becb9eafdc05eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileImpact
+  damage: 10
   impactForceMultiplier: 10
   destroyOnHit: 1

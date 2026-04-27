@@ -19,7 +19,7 @@ public class ProjectileHit : MonoBehaviour
                 ? myRb.linearVelocity * impactForceMultiplier
                 : transform.forward * impactForceMultiplier;
 
-            health.TakeDamage(damage, hitForce, hitPoint, true);
+            health.TakeDamage(damage, hitForce, hitPoint);
         }
 
         if (destroyOnHit)
